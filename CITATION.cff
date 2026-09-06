@@ -1,0 +1,26 @@
+cff-version: 1.2.0
+title: >-
+  Project Lambda: is market conductance a forecastable state variable?
+message: If you use this work, please cite it.
+type: software
+authors:
+  - name: Project Lambda contributors
+abstract: >-
+  A free-data falsification study of the market impact operator. Tests whether
+  conductance - the operator converting shocks into price movement - is a
+  forecastable state variable, and whether it is explained by the discretion
+  distribution of the holder base. Finds the former holds universally across ten
+  asset classes and the latter is not supported, including on scheduled FOMC
+  decisions where the predicted coefficient is excluded at 5.4 standard errors.
+keywords:
+  - market microstructure
+  - price impact
+  - Kyle lambda
+  - Amihud illiquidity
+  - gold
+  - commitments of traders
+  - inelastic markets
+  - falsification
+license: MIT
+version: 1.0.0
+date-released: 2026-09-06

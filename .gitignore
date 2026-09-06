@@ -1,0 +1,9 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+data/raw/*.json
+!data/raw/.gitkeep
+out/*.csv
+*.log
+.DS_Store
