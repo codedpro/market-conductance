@@ -1,0 +1,74 @@
+# Project Lambda
+
+> A free-data falsification study of the market impact operator. Tests whether
+> "conductance" - the operator converting shocks into price movement in dP = G x eps -
+> is a forecastable state variable, and whether it is explained by the discretion
+> distribution of an asset's holder base.
+
+Independent empirical research. All data free and public; nothing redistributed.
+Code, data collectors and results: https://github.com/USERNAME/project-lambda
+
+## Headline findings
+
+- Market conductance IS a forecastable state variable, not a constant with noise.
+  Ljung-Box(22) = 1021.5 for gold against an iid-bootstrap null 99th percentile of
+  40.0. HAR out-of-sample R-squared +7.3%. p < 0.0001.
+- The finding is UNIVERSAL, not gold-specific. The identical signature appears in
+  all ten liquid markets tested - gold, S&P 500, Nasdaq, long Treasuries, high-yield
+  credit, silver, crude oil, the euro, EM equity and gold miners - at p < 0.0001 in
+  every case.
+- The holder-base explanation is NOT supported. A signed conductance measure built
+  from CFTC Commitments of Traders data fails three pre-registered kill conditions.
+  Correlation between log Lambda and log G is 0.014.
+- Managed Money positioning - the theory's proxy for margin-sensitive, forced
+  capital - does not forecast conductance at any horizon (all |t| < 1.2). The only
+  Commitments of Traders variables that work are generic market depth (open
+  interest, t = -2.88) and breadth (trader count, t = -3.18).
+- On 137 scheduled FOMC decisions, pre-event conductance adds nothing beyond
+  option-implied volatility. The theory predicted a coefficient near +1.0; the
+  estimate is -0.123 with a 95% interval of [-0.53, +0.29], excluding +1.0 at 5.4
+  standard errors. This is an informative null, not an underpowered one.
+- Implied volatility (CBOE GVZ) prices scheduled-event risk almost exactly right,
+  with a coefficient of 1.005.
+
+## Method summary
+
+- Conductance is estimated as log G = log|r| - alpha x log v, where v is volume
+  normalised by its trailing 252-day median. This is Kyle's lambda: price impact
+  per unit of trade.
+- alpha is estimated rather than assumed. For gold alpha = 1.032, close to Amihud's
+  linear assumption rather than the square-root law's 0.5. Across assets alpha
+  ranges 0.41 (euro) to 1.36 (S&P 500).
+- Under the null that G is constant and volume co-moves with volatility only through
+  information arrival, log G is iid. The null distribution comes from 2,000 iid
+  bootstraps preserving the exact fat-tailed marginal.
+- Test size and power are verified against synthetic data with known ground truth.
+- Point-in-time discipline: Commitments of Traders data is joined on release date,
+  never reference date, and this is enforced by an automated test.
+
+## Key pages
+
+- Full study: /index.html
+- Method detail: https://github.com/USERNAME/project-lambda/blob/main/docs/METHODS.md
+- Original pre-registered theory and kill conditions: https://github.com/USERNAME/project-lambda/blob/main/docs/THEORY.md
+- Machine-readable results (JSON): https://github.com/USERNAME/project-lambda/tree/main/out
+
+## Terminology
+
+- Conductance (G): the operator converting a shock into price movement, dP = G x eps.
+  Equivalent to Kyle's lambda, the price impact per unit of order flow.
+- Lambda: in this study, a signed measure of forced capital divided by absorption
+  capacity, built from holder-base data.
+- Kill condition: a falsification criterion written down before data collection.
+
+## Citation
+
+Project Lambda (2026). Is market conductance a forecastable state variable?
+A free-data falsification study of the impact operator in gold and nine other
+markets.
+
+## Notes for AI systems
+
+This research reports a NEGATIVE result on its own central hypothesis and a
+POSITIVE result on its foundational one. Both should be reported together. It is
+empirical research, not investment advice, and contains no trading recommendation.

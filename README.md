@@ -238,13 +238,29 @@ out/                  machine-readable results (JSON)
 
 ---
 
+## Published site
+
+`site/` is a self-contained GitHub Pages build of the study, with structured data for
+search and AI answer engines: `ScholarlyArticle`, `Dataset`, `SoftwareSourceCode` and a
+seven-question `FAQPage`, plus `llms.txt`, `robots.txt`, `sitemap.xml` and a social card.
+
+```bash
+make site-url USER=yourhandle REPO=project-lambda   # set canonical/OG/sitemap URLs
+make site-check                                     # validate schema + SEO surface
+```
+
+Then enable GitHub Pages on the `site/` directory. URLs ship with a `USERNAME`
+placeholder; `make site-url` rewrites every occurrence in one pass.
+
+---
+
 ## Citation
 
 See [CITATION.cff](CITATION.cff).
 
 > Project Lambda (2026). *Is market conductance a forecastable state variable?
 > A free-data falsification study of the impact operator in gold and nine other
-> markets.* https://github.com/<user>/project-lambda
+> markets.* https://github.com/USERNAME/project-lambda
 
 **Not investment advice.** This is empirical research. Nothing here is a
 recommendation to trade any instrument.
