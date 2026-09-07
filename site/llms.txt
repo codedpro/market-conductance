@@ -6,7 +6,7 @@
 > distribution of an asset's holder base.
 
 Independent empirical research. All data free and public; nothing redistributed.
-Code, data collectors and results: https://github.com/USERNAME/project-lambda
+Code, data collectors and results: https://github.com/codedpro/market-conductance
 
 ## Headline findings
 
@@ -49,9 +49,9 @@ Code, data collectors and results: https://github.com/USERNAME/project-lambda
 ## Key pages
 
 - Full study: /index.html
-- Method detail: https://github.com/USERNAME/project-lambda/blob/main/docs/METHODS.md
-- Original pre-registered theory and kill conditions: https://github.com/USERNAME/project-lambda/blob/main/docs/THEORY.md
-- Machine-readable results (JSON): https://github.com/USERNAME/project-lambda/tree/main/out
+- Method detail: https://github.com/codedpro/market-conductance/blob/main/docs/METHODS.md
+- Original pre-registered theory and kill conditions: https://github.com/codedpro/market-conductance/blob/main/docs/THEORY.md
+- Machine-readable results (JSON): https://github.com/codedpro/market-conductance/tree/main/out
 
 ## Terminology
 

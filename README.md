@@ -244,13 +244,14 @@ out/                  machine-readable results (JSON)
 search and AI answer engines: `ScholarlyArticle`, `Dataset`, `SoftwareSourceCode` and a
 seven-question `FAQPage`, plus `llms.txt`, `robots.txt`, `sitemap.xml` and a social card.
 
+**Live at [codedpro.github.io/market-conductance](https://codedpro.github.io/market-conductance/).**
+
 ```bash
-make site-url USER=yourhandle REPO=project-lambda   # set canonical/OG/sitemap URLs
-make site-check                                     # validate schema + SEO surface
+make site-check   # validate structured data + SEO surface
 ```
 
-Then enable GitHub Pages on the `site/` directory. URLs ship with a `USERNAME`
-placeholder; `make site-url` rewrites every occurrence in one pass.
+If you fork this to a different host, `make site-url USER=you REPO=yourrepo`
+rewrites every canonical, Open Graph and sitemap URL in one pass.
 
 ---
 
@@ -260,7 +261,7 @@ See [CITATION.cff](CITATION.cff).
 
 > Project Lambda (2026). *Is market conductance a forecastable state variable?
 > A free-data falsification study of the impact operator in gold and nine other
-> markets.* https://github.com/USERNAME/project-lambda
+> markets.* https://github.com/codedpro/market-conductance
 
 **Not investment advice.** This is empirical research. Nothing here is a
 recommendation to trade any instrument.
