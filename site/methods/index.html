@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>How to Measure Price Impact From Free Daily Data | Methods</title>
+<meta name="description" content="Estimating Kyle's lambda from daily data: fitting the impact exponent instead of assuming the square-root law, building a sharp iid null, and calibrating test size and power.">
+<link rel="canonical" href="https://codedpro.github.io/market-conductance/methods/">
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1">
+<meta name="author" content="codedpro">
+<meta name="theme-color" content="#f7f8f9">
+
+<meta name="citation_title" content="Is market conductance a forecastable state variable? A free-data falsification study of the impact operator in gold and nine other markets">
+<meta name="citation_author" content="codedpro">
+<meta name="citation_author" content="ITMaster">
+<meta name="citation_author" content="Code Nest">
+<meta name="citation_publication_date" content="2026/09/06">
+<meta name="citation_online_date" content="2026/09/06">
+<meta name="citation_abstract_html_url" content="https://codedpro.github.io/market-conductance/">
+<meta name="citation_public_url" content="https://codedpro.github.io/market-conductance/">
+<meta name="citation_fulltext_world_readable" content="">
+<meta name="citation_language" content="en">
+<meta name="citation_keywords" content="market microstructure; price impact; Kyle lambda; Amihud illiquidity; market conductance; gold; Commitments of Traders; inelastic markets; event study; falsification">
+
+<meta name="DC.title" content="Is market conductance a forecastable state variable? A free-data falsification study of the impact operator in gold and nine other markets">
+<meta name="DC.creator" content="codedpro">
+<meta name="DC.date" content="2026-09-06">
+<meta name="DC.type" content="Text">
+<meta name="DC.format" content="text/html">
+<meta name="DC.language" content="en">
+<meta name="DC.rights" content="MIT">
+<meta name="DC.identifier" content="https://codedpro.github.io/market-conductance/">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Market Conductance Study">
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content="How to measure price impact from free daily data">
+<meta property="og:description" content="Estimating Kyle's lambda from daily data: fitting the impact exponent instead of assuming the square-root law, building a sharp iid null, and calibrating test size and power.">
+<meta property="og:url" content="https://codedpro.github.io/market-conductance/methods/">
+<meta property="og:image" content="https://codedpro.github.io/market-conductance/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Market conductance study: forecastable in ten of ten asset classes; the holder-base explanation rejected at 5.4 sigma.">
+<meta property="article:published_time" content="2026-09-06">
+<meta property="article:modified_time" content="2026-09-10">
+<meta property="article:author" content="codedpro">
+<meta property="article:section" content="Quantitative finance">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="How to measure price impact from free daily data">
+<meta name="twitter:description" content="Estimating Kyle's lambda from daily data: fitting the impact exponent instead of assuming the square-root law, building a sharp iid null, and calibrating test size and power.">
+<meta name="twitter:image" content="https://codedpro.github.io/market-conductance/og.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="alternate" type="text/plain" href="https://codedpro.github.io/market-conductance/llms.txt" title="llms.txt">
+
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "WebSite",
+   "@id": "https://codedpro.github.io/market-conductance/#website",
+   "url": "https://codedpro.github.io/market-conductance/",
+   "name": "Market Conductance Study",
+   "description": "Empirical falsification study of the market price-impact operator.",
+   "inLanguage": "en",
+   "publisher": {
+    "@id": "https://codedpro.github.io/market-conductance/#org"
+   }
+  },
+  {
+   "@type": "Organization",
+   "@id": "https://codedpro.github.io/market-conductance/#org",
+   "name": "Project Lambda",
+   "url": "https://codedpro.github.io/market-conductance/",
+   "sameAs": [
+    "https://github.com/codedpro/market-conductance"
+   ],
+   "member": [
+    {
+     "@type": "Organization",
+     "name": "ITMaster",
+     "url": "https://itmaster.uk"
+    },
+    {
+     "@type": "Organization",
+     "name": "Code Nest",
+     "url": "https://code-nest.dev"
+    }
+   ]
+  },
+  {
+   "@type": "BreadcrumbList",
+   "@id": "https://codedpro.github.io/market-conductance/methods/#breadcrumb",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Home",
+     "item": "https://codedpro.github.io/market-conductance/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Methods",
+     "item": "https://codedpro.github.io/market-conductance/methods/"
+    }
+   ]
+  },
+  {
+   "@type": "WebPage",
+   "@id": "https://codedpro.github.io/market-conductance/methods/#webpage",
+   "url": "https://codedpro.github.io/market-conductance/methods/",
+   "name": "How to Measure Price Impact From Free Daily Data | Methods",
+   "description": "Estimating Kyle's lambda from daily data: fitting the impact exponent instead of assuming the square-root law, building a sharp iid null, and calibrating test size and power.",
+   "isPartOf": {
+    "@id": "https://codedpro.github.io/market-conductance/#website"
+   },
+   "breadcrumb": {
+    "@id": "https://codedpro.github.io/market-conductance/methods/#breadcrumb"
+   },
+   "datePublished": "2026-09-06",
+   "dateModified": "2026-09-10",
+   "inLanguage": "en"
+  }
+ ]
+}
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="wrap">
+<nav class="topnav" aria-label="Sections">
+<a href="../">Study</a><a href="../results/">Results</a><a href="../methods/">Methods</a><a href="../data/">Data</a><a href="../faq/">FAQ</a>
+<a class="gh" href="https://github.com/codedpro/market-conductance">Code &#8599;</a>
+</nav>
+<main id="main">
+<h1>How to measure price impact from free daily data</h1>
+<p class="sub">The estimator, why the impact exponent is fitted rather than assumed, how the null is
+calibrated against synthetic data, and the point-in-time discipline that keeps a backtest honest.</p>
+<div class="toc"><b>On this page</b><ul>
+<li><a href="#estimator">The estimator</a></li>
+<li><a href="#alpha">Fitting the impact exponent</a></li>
+<li><a href="#null">The null, and why it is sharp</a></li>
+<li><a href="#calibration">Calibrating size and power</a></li>
+<li><a href="#lambda">Constructing signed &Lambda;</a></li>
+<li><a href="#pit">Point-in-time discipline</a></li>
+<li><a href="#event">The scheduled-event design</a></li>
+<li><a href="#breaks">Structural breaks</a></li>
+<li><a href="#refs">References</a></li>
+</ul></div>
+
+<h2 id="estimator">The estimator</h2>
+<p>In a Kyle (1985) framework <code>r = &lambda; &middot; flow</code>, so &lambda; &mdash; price
+impact per unit of trade &mdash; <em>is</em> the conductance. With daily free data:</p>
+<pre><code>log G_t = log |r_t| &minus; &alpha; &middot; log v_t
+
+v_t = V_t / median(V, trailing 252 days)</code></pre>
+<p>Normalising volume by a trailing median removes secular volume growth and contract-roll drift
+without touching sub-annual variation. The window is trailing only, so it introduces no lookahead.</p>
+
+<h2 id="alpha">Fitting the impact exponent</h2>
+<p>The <strong>square-root law of market impact</strong> assumes &alpha; = 0.5. <strong>Amihud
+illiquidity</strong> assumes &alpha; = 1.0. Rather than pick, regress <code>log|r|</code> on
+<code>log v</code> and read the exponent off the data: &alpha;&#770; = 1.032 for gold, and a range
+from 0.41 (euro) to 1.36 (S&amp;P 500) across the universe. No single assumed exponent would have
+been right.</p>
+<p>Fitting &alpha; has a second benefit that matters more than accuracy. At the fitted value,
+<code>log G</code> is <strong>orthogonal to <code>log v</code> by construction</strong>, so
+persistence in conductance cannot be an artefact of volume persistence. An automated test verifies
+the residual correlation stays below 0.02 on synthetic data. Results are reported at
+&alpha;&#770;, 0.5 and 1.0; all three agree.</p>
+
+<h2 id="null">The null, and why it is sharp</h2>
+<p>Under the joint hypothesis that</p>
+<ul><li><code>G</code> is a constant, and</li>
+<li>volume and volatility co-move only through information arrival (the mixture-of-distributions
+hypothesis),</li></ul>
+<p><code>log G</code> is <strong>iid</strong>. That is the reason for this particular estimator: it
+turns a vague hypothesis into a sharp, testable one.</p>
+<p>The null distribution comes from 2,000 <strong>iid bootstrap</strong> resamples of the empirical
+series, preserving its exact fat-tailed marginal while destroying time structure. The identical
+statistic pipeline runs on real and simulated series, so anything the pipeline itself induces
+appears in the null too. Statistics: AR(1), AR(5), AR(22), Ljung-Box(22), variance ratios at 5, 22
+and 66 days, and out-of-sample R&sup2; of a HAR forecast benchmarked against the expanding mean.</p>
+
+<h2 id="calibration">Calibrating size and power</h2>
+<p>The headline result rests on the test rejecting a constant-conductance world at roughly its
+nominal rate and having power against a varying one. That is checked, not asserted. Synthetic
+markets are built with known ground truth &mdash; persistent volume in both arms, conductance
+constant in one and an AR(1) state variable in the other &mdash; and the suite verifies the test
+does not over-reject under the null and does detect the alternative. It also verifies exponent
+recovery and the orthogonality property above.</p>
+
+<h2 id="lambda">Constructing signed &Lambda;</h2>
+<pre><code>&Lambda;_down = MM_long  &times; w(underwater_long)  / absorption
+&Lambda;_up   = MM_short &times; w(underwater_short) / absorption
+
+absorption = OI &times; breadth &times; (1 &minus; top-4 concentration)</code></pre>
+<p>Trigger distance uses a cost-basis tracker: a weighted-average entry price that moves toward the
+current price only when a position is <em>added to</em>, and stays put when trimmed. Distance from
+basis is scaled to a monthly volatility horizon and passed through a logistic.</p>
+<div class="key"><p><strong>Correction applied mid-run.</strong> The first version scaled by
+<em>daily</em> volatility (about 1%) while positions sit about 10% from basis. That saturated the
+logistic to exactly 0 or 1, turning &Lambda; into a binary switch. It was fixed before the reported
+numbers were produced. Both versions fail their kill conditions; the fixed version fails less
+badly.</p></div>
+
+<h2 id="pit">Point-in-time discipline</h2>
+<p>The CFTC Commitments of Traders report is a Tuesday snapshot published the following Friday at
+15:30 ET &mdash; a three-day information lag. Every series stores <strong>both</strong> a reference
+date and a release date, and every join uses release date only. Timestamping by reference date
+instead produces a backtest that looks excellent and means nothing. An automated test asserts no row
+is ever consumed before the day it was published.</p>
+
+<h2 id="event">The scheduled-event design</h2>
+<p>Persistence alone cannot say <em>why</em> conductance persists. Two stories fit: a transmission
+operator varying with market structure, or autocorrelated shock magnitudes &mdash; clustered news.
+Scheduled FOMC decisions separate them, because the date is fixed years ahead and the surprise size
+is close to unpredictable by construction of an event study.</p>
+<pre><code>log|r_event| ~ &beta; &middot; log G_pre + &gamma;&#8321; &middot; log RV_pre + &gamma;&#8322; &middot; log IV_pre</code></pre>
+<p><code>G_pre</code> and <code>RV_pre</code> are means over a strictly prior window; <code>IV_pre</code>
+is the last GVZ close before the event. The benchmark is deliberately hostile: GVZ is forward-looking
+and already knows the meeting is coming. With about 148 events an expanding window is too thin, so
+out-of-sample uses <strong>leave-one-year-out</strong> cross-validation. A placebo runs the identical
+specification on all non-FOMC days.</p>
+<p>Only <strong>regularly scheduled</strong> meetings are used. Unscheduled and emergency actions
+happen <em>because</em> markets are stressed; including them would manufacture the exact correlation
+under test. Exclusion follows the Federal Reserve's own labels.</p>
+
+<h2 id="breaks">Structural breaks handled explicitly</h2>
+<div class="tscroll"><table>
+<thead><tr><th>Date</th><th>Break</th><th>Consequence</th></tr></thead>
+<tbody>
+<tr><td>30 Jan 2015</td><td>GOFO discontinued</td><td>Lease-rate series ends; anything post-2015 must be synthetic</td></tr>
+<tr><td>1 Jan 2022</td><td>SA-CCR reclassifies gold derivatives</td><td>Inflates reported precious-metals notional in OCC data</td></tr>
+<tr><td>13 Jan 2026</td><td>CME moves precious metals to percentage margin (gold 5%)</td><td>The compulsion mechanism itself changed; pre- and post-2026 &Lambda; are not the same variable</td></tr>
+</tbody></table></div>
+
+<h2 id="refs">References</h2>
+<ul>
+<li>Kyle, A. (1985). Continuous auctions and insider trading. <em>Econometrica</em> 53(6), 1315&ndash;1335.</li>
+<li>Amihud, Y. (2002). Illiquidity and stock returns. <em>Journal of Financial Markets</em> 5(1), 31&ndash;56.</li>
+<li>Gabaix, X. &amp; Koijen, R. (2021). In search of the origins of financial fluctuations: the inelastic markets hypothesis. NBER 28967.</li>
+<li>Brunnermeier, M. &amp; Pedersen, L. (2009). Market liquidity and funding liquidity. <em>Review of Financial Studies</em> 22(6).</li>
+<li>Corsi, F. (2009). A simple approximate long-memory model of realized volatility. <em>Journal of Financial Econometrics</em> 7(2).</li>
+</ul>
+
+</main>
+<footer>
+<p><strong>Contributing team.</strong> Research engineering and infrastructure by
+<a href="https://itmaster.uk">ITMaster</a> and <a href="https://code-nest.dev">Code Nest</a>.</p>
+<p><strong>Cite this work.</strong> codedpro (2026). <em>Is market conductance a forecastable state variable? A free-data falsification study of the impact operator in gold and nine other markets.</em>
+<a href="https://codedpro.github.io/market-conductance/">https://codedpro.github.io/market-conductance/</a></p>
+<p><a href="../">Study</a> &middot; <a href="../results/">Full results</a> &middot;
+<a href="../methods/">Methods</a> &middot; <a href="../data/">Data sources</a> &middot;
+<a href="../faq/">FAQ</a> &middot; <a href="https://github.com/codedpro/market-conductance">Code and data on GitHub</a></p>
+<p>MIT licensed. Published 2026-09-06, last updated 2026-09-10.
+<strong>Not investment advice</strong> &mdash; this is empirical research and contains no
+recommendation to trade any instrument.</p>
+</footer>
+</div>
+</body>
+</html>

@@ -48,7 +48,11 @@ Code, data collectors and results: https://github.com/codedpro/market-conductanc
 
 ## Key pages
 
-- Full study: /index.html
+- Study and abstract: https://codedpro.github.io/market-conductance/
+- Full results, every coefficient: https://codedpro.github.io/market-conductance/results/
+- Methods, estimator and null construction: https://codedpro.github.io/market-conductance/methods/
+- Free data sources and what is now blocked: https://codedpro.github.io/market-conductance/data/
+- Sixteen questions answered: https://codedpro.github.io/market-conductance/faq/
 - Method detail: https://github.com/codedpro/market-conductance/blob/main/docs/METHODS.md
 - Original pre-registered theory and kill conditions: https://github.com/codedpro/market-conductance/blob/main/docs/THEORY.md
 - Machine-readable results (JSON): https://github.com/codedpro/market-conductance/tree/main/out
@@ -60,6 +64,11 @@ Code, data collectors and results: https://github.com/codedpro/market-conductanc
 - Lambda: in this study, a signed measure of forced capital divided by absorption
   capacity, built from holder-base data.
 - Kill condition: a falsification criterion written down before data collection.
+
+## Contributing team
+
+Research engineering and infrastructure by ITMaster (https://itmaster.uk) and
+Code Nest (https://code-nest.dev).
 
 ## Citation
 

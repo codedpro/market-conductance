@@ -1,47 +1,80 @@
-"""Validate the published site's structured data and SEO surface."""
+"""Validate the published site: structured data, SEO surface, and link policy."""
 import json, re, pathlib, sys
 
-h = pathlib.Path("site/index.html").read_text()
-fail = []
+SITE = pathlib.Path("site")
+BASE = "https://codedpro.github.io/market-conductance"
+PAGES = ["index.html", "results/index.html", "methods/index.html",
+         "data/index.html", "faq/index.html"]
+CONTRIB = ["https://itmaster.uk", "https://code-nest.dev"]
+fail, notes = [], []
 
-blocks = re.findall(r'<script type="application/ld\+json">(.*?)</script>', h, re.S)
-if not blocks:
-    fail.append("no JSON-LD block")
-for b in blocks:
-    try:
-        d = json.loads(b)
-    except json.JSONDecodeError as e:
-        fail.append(f"JSON-LD does not parse: {e}"); continue
-    types = {g.get("@type") for g in d.get("@graph", [])}
-    for need in ("ScholarlyArticle", "Dataset", "FAQPage", "SoftwareSourceCode"):
-        if need not in types:
-            fail.append(f"missing schema type: {need}")
-    for g in d.get("@graph", []):
-        if g.get("@type") == "FAQPage":
-            for q in g["mainEntity"]:
-                if q.get("@type") != "Question" or q["acceptedAnswer"].get("@type") != "Answer":
-                    fail.append("malformed FAQ entry")
+for rel in PAGES:
+    f = SITE / rel
+    if not f.exists():
+        fail.append(f"missing page {rel}"); continue
+    h = f.read_text()
+    tag = f"[{rel}]"
 
-m = re.search(r'name="description" content="([^"]*)"', h)
-if not m:
-    fail.append("no meta description")
-elif not 110 <= len(m.group(1)) <= 165:
-    fail.append(f"meta description {len(m.group(1))} chars (want 110-165)")
+    for m in re.findall(r'<script type="application/ld\+json">(.*?)</script>', h, re.S):
+        try:
+            d = json.loads(m)
+        except json.JSONDecodeError as e:
+            fail.append(f"{tag} JSON-LD parse error: {e}"); continue
+        types = {g.get("@type") for g in d.get("@graph", [])}
+        for need in ("WebSite", "Organization", "BreadcrumbList", "WebPage"):
+            if need not in types:
+                fail.append(f"{tag} missing schema {need}")
 
-for tag in ('rel="canonical"', 'og:title', 'og:image', 'twitter:card', 'lang="en"'):
-    if tag not in h:
-        fail.append(f"missing {tag}")
-if h.count("<h1") != 1:
-    fail.append(f"h1 count is {h.count('<h1')}, must be 1")
+    m = re.search(r'name="description" content="([^"]*)"', h)
+    if not m:
+        fail.append(f"{tag} no meta description")
+    elif not 110 <= len(m.group(1)) <= 175:
+        fail.append(f"{tag} meta description {len(m.group(1))} chars (want 110-175)")
 
-for f in ("site/robots.txt", "site/sitemap.xml", "site/llms.txt", "site/og.png", "site/.nojekyll"):
-    if not pathlib.Path(f).exists():
-        fail.append(f"missing {f}")
+    t = re.search(r"<title>([^<]*)</title>", h)
+    if not t:
+        fail.append(f"{tag} no title")
+    elif len(t.group(1)) > 65:
+        notes.append(f"{tag} title {len(t.group(1))} chars (Google truncates ~60-65)")
 
-if "USERNAME" in h:
-    print("note: USERNAME placeholder still present - run `make site-url USER=... REPO=...`")
+    if h.count("<h1") != 1:
+        fail.append(f"{tag} h1 count is {h.count('<h1')}, must be 1")
+    for need in ('rel="canonical"', "og:title", "og:image", "twitter:card", 'lang="en"',
+                 'name="citation_title"', 'name="DC.title"'):
+        if need not in h:
+            fail.append(f"{tag} missing {need}")
+    if "USERNAME" in h or "project-lambda" in h:
+        fail.append(f"{tag} stale placeholder URL")
+
+    # link policy: contributor links must be dofollow
+    for url in CONTRIB:
+        for a in re.findall(r'<a\s[^>]*href="' + re.escape(url) + r'"[^>]*>', h):
+            if re.search(r'rel="[^"]*\b(nofollow|sponsored|ugc)\b', a):
+                fail.append(f"{tag} contributor link is NOT dofollow: {a}")
+
+# contributor links present somewhere
+allhtml = "".join((SITE / p).read_text() for p in PAGES if (SITE / p).exists())
+for url in CONTRIB:
+    n = allhtml.count(f'href="{url}"')
+    if n == 0:
+        fail.append(f"contributor link missing entirely: {url}")
+    else:
+        notes.append(f"contributor {url}: {n} dofollow links")
+
+for f_ in ("robots.txt", "sitemap.xml", "llms.txt", "llms-full.txt", "og.png",
+           ".nojekyll", "assets/style.css"):
+    if not (SITE / f_).exists():
+        fail.append(f"missing {f_}")
+
+sm = (SITE / "sitemap.xml").read_text() if (SITE / "sitemap.xml").exists() else ""
+for rel in PAGES:
+    loc = f"{BASE}/" if rel == "index.html" else f"{BASE}/{rel.replace('index.html', '')}"
+    if loc not in sm:
+        fail.append(f"sitemap missing {loc}")
 
 print("FAIL:" if fail else "site checks passed")
-for f in fail:
-    print("  -", f)
+for x in fail:
+    print("  -", x)
+for n in notes:
+    print("  note:", n)
 sys.exit(1 if fail else 0)

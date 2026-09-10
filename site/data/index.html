@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Market Data Sources: CFTC COT, LBMA, GVZ, FOMC Dates</title>
+<meta name="description" content="Every free endpoint used: CFTC Commitments of Traders API, LBMA gold fix, CBOE GVZ, FOMC dates. Which sources are now blocked, and why Yahoo GC=F volume is unusable.">
+<link rel="canonical" href="https://codedpro.github.io/market-conductance/data/">
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1">
+<meta name="author" content="codedpro">
+<meta name="theme-color" content="#f7f8f9">
+
+<meta name="citation_title" content="Is market conductance a forecastable state variable? A free-data falsification study of the impact operator in gold and nine other markets">
+<meta name="citation_author" content="codedpro">
+<meta name="citation_author" content="ITMaster">
+<meta name="citation_author" content="Code Nest">
+<meta name="citation_publication_date" content="2026/09/06">
+<meta name="citation_online_date" content="2026/09/06">
+<meta name="citation_abstract_html_url" content="https://codedpro.github.io/market-conductance/">
+<meta name="citation_public_url" content="https://codedpro.github.io/market-conductance/">
+<meta name="citation_fulltext_world_readable" content="">
+<meta name="citation_language" content="en">
+<meta name="citation_keywords" content="market microstructure; price impact; Kyle lambda; Amihud illiquidity; market conductance; gold; Commitments of Traders; inelastic markets; event study; falsification">
+
+<meta name="DC.title" content="Is market conductance a forecastable state variable? A free-data falsification study of the impact operator in gold and nine other markets">
+<meta name="DC.creator" content="codedpro">
+<meta name="DC.date" content="2026-09-06">
+<meta name="DC.type" content="Text">
+<meta name="DC.format" content="text/html">
+<meta name="DC.language" content="en">
+<meta name="DC.rights" content="MIT">
+<meta name="DC.identifier" content="https://codedpro.github.io/market-conductance/">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Market Conductance Study">
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content="Free market data sources used in this study">
+<meta property="og:description" content="Every free endpoint used: CFTC Commitments of Traders API, LBMA gold fix, CBOE GVZ, FOMC dates. Which sources are now blocked, and why Yahoo GC=F volume is unusable.">
+<meta property="og:url" content="https://codedpro.github.io/market-conductance/data/">
+<meta property="og:image" content="https://codedpro.github.io/market-conductance/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Market conductance study: forecastable in ten of ten asset classes; the holder-base explanation rejected at 5.4 sigma.">
+<meta property="article:published_time" content="2026-09-06">
+<meta property="article:modified_time" content="2026-09-10">
+<meta property="article:author" content="codedpro">
+<meta property="article:section" content="Quantitative finance">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Free market data sources used in this study">
+<meta name="twitter:description" content="Every free endpoint used: CFTC Commitments of Traders API, LBMA gold fix, CBOE GVZ, FOMC dates. Which sources are now blocked, and why Yahoo GC=F volume is unusable.">
+<meta name="twitter:image" content="https://codedpro.github.io/market-conductance/og.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="alternate" type="text/plain" href="https://codedpro.github.io/market-conductance/llms.txt" title="llms.txt">
+
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "WebSite",
+   "@id": "https://codedpro.github.io/market-conductance/#website",
+   "url": "https://codedpro.github.io/market-conductance/",
+   "name": "Market Conductance Study",
+   "description": "Empirical falsification study of the market price-impact operator.",
+   "inLanguage": "en",
+   "publisher": {
+    "@id": "https://codedpro.github.io/market-conductance/#org"
+   }
+  },
+  {
+   "@type": "Organization",
+   "@id": "https://codedpro.github.io/market-conductance/#org",
+   "name": "Project Lambda",
+   "url": "https://codedpro.github.io/market-conductance/",
+   "sameAs": [
+    "https://github.com/codedpro/market-conductance"
+   ],
+   "member": [
+    {
+     "@type": "Organization",
+     "name": "ITMaster",
+     "url": "https://itmaster.uk"
+    },
+    {
+     "@type": "Organization",
+     "name": "Code Nest",
+     "url": "https://code-nest.dev"
+    }
+   ]
+  },
+  {
+   "@type": "BreadcrumbList",
+   "@id": "https://codedpro.github.io/market-conductance/data/#breadcrumb",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Home",
+     "item": "https://codedpro.github.io/market-conductance/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Data",
+     "item": "https://codedpro.github.io/market-conductance/data/"
+    }
+   ]
+  },
+  {
+   "@type": "WebPage",
+   "@id": "https://codedpro.github.io/market-conductance/data/#webpage",
+   "url": "https://codedpro.github.io/market-conductance/data/",
+   "name": "Free Market Data Sources: CFTC COT, LBMA, GVZ, FOMC Dates",
+   "description": "Every free endpoint used: CFTC Commitments of Traders API, LBMA gold fix, CBOE GVZ, FOMC dates. Which sources are now blocked, and why Yahoo GC=F volume is unusable.",
+   "isPartOf": {
+    "@id": "https://codedpro.github.io/market-conductance/#website"
+   },
+   "breadcrumb": {
+    "@id": "https://codedpro.github.io/market-conductance/data/#breadcrumb"
+   },
+   "datePublished": "2026-09-06",
+   "dateModified": "2026-09-10",
+   "inLanguage": "en"
+  }
+ ]
+}
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="wrap">
+<nav class="topnav" aria-label="Sections">
+<a href="../">Study</a><a href="../results/">Results</a><a href="../methods/">Methods</a><a href="../data/">Data</a><a href="../faq/">FAQ</a>
+<a class="gh" href="https://github.com/codedpro/market-conductance">Code &#8599;</a>
+</nav>
+<main id="main">
+<h1>Free market data sources used in this study</h1>
+<p class="sub">Every endpoint, what it costs, what it covers, and which sources that were free are
+now blocked. No third-party data is redistributed &mdash; collectors fetch at run time.</p>
+
+<h2 id="working">Sources that work</h2>
+<div class="tscroll"><table>
+<caption>All free, no API key required except where noted. Probed 6 September 2026.</caption>
+<thead><tr><th>Source</th><th>Role</th><th>Coverage</th><th class="n">Status</th></tr></thead>
+<tbody>
+<tr><td><strong>CFTC Disaggregated Commitments of Traders</strong> &mdash; Socrata API at <code>publicreporting.cftc.gov</code>, gold contract <code>088691</code></td><td>Holder base</td><td>1,056 weeks, 2006&ndash;2026</td><td class="n"><span class="stamp pass">OK</span></td></tr>
+<tr><td><strong>Daily OHLCV for ten ETFs</strong> &mdash; GLD, SPY, QQQ, TLT, HYG, SLV, USO, FXE, EEM, GDX</td><td>Instruments</td><td>4,640 days each, 2008&ndash;2026</td><td class="n"><span class="stamp pass">OK</span></td></tr>
+<tr><td><strong>LBMA gold price</strong> &mdash; official PM fix feed</td><td>Price</td><td>14,676 days, 1968&ndash;2026</td><td class="n"><span class="stamp pass">OK</span></td></tr>
+<tr><td><strong>CBOE GVZ</strong> &mdash; gold implied volatility index</td><td>Control</td><td>4,594 days, 2008&ndash;2026</td><td class="n"><span class="stamp pass">OK</span></td></tr>
+<tr><td><strong>Federal Reserve FOMC calendar</strong> &mdash; meeting blocks and statement links</td><td>Event dates</td><td>148 scheduled decisions, 2008&ndash;2026</td><td class="n"><span class="stamp pass">OK</span></td></tr>
+<tr><td>Dollar index, 10-year Treasury yield</td><td>Controls</td><td>2001&ndash;2026</td><td class="n"><span class="stamp pass">OK</span></td></tr>
+</tbody></table></div>
+
+<h2 id="blocked">Sources that are no longer freely accessible</h2>
+<p>Two corrections to the standard data inventory, both discovered by probing rather than assumed:</p>
+<div class="tscroll"><table>
+<thead><tr><th>Source</th><th>Role</th><th class="n">Status</th></tr></thead>
+<tbody>
+<tr><td><strong>COMEX warehouse stocks</strong> &mdash; registered versus eligible, <code>cmegroup.com/delivery_reports/Gold_Stocks.xls</code></td><td>Absorption</td><td class="n"><span class="stamp fail">403 &mdash; bot-blocked</span></td></tr>
+<tr><td><strong>LBMA vault holdings</strong> &mdash; seven custodians plus Bank of England</td><td>Absorption</td><td class="n"><span class="stamp fail">404 &mdash; URLs moved</span></td></tr>
+<tr><td>World Gold Council Goldhub</td><td>Absorption</td><td class="n"><span class="stamp warn">registration</span></td></tr>
+<tr><td>FRED CSV endpoint</td><td>Control</td><td class="n"><span class="stamp warn">rate-limited</span></td></tr>
+</tbody></table></div>
+<p>Together the first two are the <strong>entire absorption stack</strong> &mdash; the denominator of
+&Lambda;, including the registered-versus-eligible split that makes COMEX unusual. That half of the
+framework could only be tested through weaker proxies (open interest and trader count), which is a
+material limitation on the result.</p>
+
+<h2 id="gcf">A warning: Yahoo GC=F historical volume is broken</h2>
+<p>Not merely noisy &mdash; unusable. Median daily volume by year runs 56 to 905 contracts against a
+maximum near 200,000, with 41 zero-volume days. The series alternates between the front-month
+aggregate and a near-dead contract. Price is fine; volume is not. Any study that computes turnover,
+Amihud illiquidity or impact from this series will produce nonsense. This study measures on GLD,
+whose consolidated NYSE Arca volume is clean across nineteen years: median 6&ndash;15 million shares,
+no zeros.</p>
+
+<h2 id="fomc-dates">Extracting FOMC decision dates correctly</h2>
+<p>Each FOMC policy decision publishes exactly one statement, so the Federal Reserve's own statement
+links are an authoritative, non-derived list of decision dates. Two traps:</p>
+<ul>
+<li><strong>Exclude unscheduled meetings.</strong> Emergency actions happen because markets are
+stressed. The Fed labels them &mdash; "(unscheduled)", "(cancelled)", "Conference Call", "notation
+vote" &mdash; so exclusion follows their taxonomy, not a judgement call.</li>
+<li><strong>Watch month-straddling meetings.</strong> A two-day meeting spanning a month end is
+headed "April/May 30-1" or "Jan/Feb 31-1", so a naive month filter silently drops it.</li>
+<li><strong>Not every <code>monetary&lt;date&gt;</code> link is a decision.</strong> Framework
+releases use the same URL pattern. Cross-checking against press-conference links and the
+Wednesday decision convention removes them.</li>
+</ul>
+
+<h2 id="reproduce">Reproducing the study</h2>
+<pre><code>git clone https://github.com/codedpro/market-conductance
+cd market-conductance
+make setup      # venv and pinned dependencies
+make all        # collect, measure, engine, cot, events, generalize
+make test       # calibration: size, power, point-in-time discipline</code></pre>
+<p>Roughly fifteen minutes, total cost $0. Random seeds are fixed. Collectors write immutable raw
+snapshots with provenance attached, and every series carries both its reference and release dates.
+Machine-readable results land in <code>out/</code> as JSON.</p>
+
+</main>
+<footer>
+<p><strong>Contributing team.</strong> Research engineering and infrastructure by
+<a href="https://itmaster.uk">ITMaster</a> and <a href="https://code-nest.dev">Code Nest</a>.</p>
+<p><strong>Cite this work.</strong> codedpro (2026). <em>Is market conductance a forecastable state variable? A free-data falsification study of the impact operator in gold and nine other markets.</em>
+<a href="https://codedpro.github.io/market-conductance/">https://codedpro.github.io/market-conductance/</a></p>
+<p><a href="../">Study</a> &middot; <a href="../results/">Full results</a> &middot;
+<a href="../methods/">Methods</a> &middot; <a href="../data/">Data sources</a> &middot;
+<a href="../faq/">FAQ</a> &middot; <a href="https://github.com/codedpro/market-conductance">Code and data on GitHub</a></p>
+<p>MIT licensed. Published 2026-09-06, last updated 2026-09-10.
+<strong>Not investment advice</strong> &mdash; this is empirical research and contains no
+recommendation to trade any instrument.</p>
+</footer>
+</div>
+</body>
+</html>

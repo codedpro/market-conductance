@@ -28,3 +28,7 @@ User-agent: Bingbot
 Allow: /
 
 Sitemap: https://codedpro.github.io/market-conductance/sitemap.xml
+
+# Plain-text summaries for AI systems
+# https://codedpro.github.io/market-conductance/llms.txt
+# https://codedpro.github.io/market-conductance/llms-full.txt
