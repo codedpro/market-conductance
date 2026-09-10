@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Full Results: Six Tests of the Market Impact Operator</title>
+<meta name="description" content="Every coefficient and confidence interval: the persistence null, three kill conditions, a 137-event FOMC study and a ten-asset generalisation of price impact.">
+<link rel="canonical" href="https://codedpro.github.io/market-conductance/results/">
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1">
+<meta name="author" content="codedpro">
+<meta name="theme-color" content="#f7f8f9">
+
+<meta name="citation_title" content="Is market conductance a forecastable state variable? A free-data falsification study of the impact operator in gold and nine other markets">
+<meta name="citation_author" content="codedpro">
+<meta name="citation_author" content="ITMaster">
+<meta name="citation_author" content="Code Nest">
+<meta name="citation_publication_date" content="2026/09/06">
+<meta name="citation_online_date" content="2026/09/06">
+<meta name="citation_abstract_html_url" content="https://codedpro.github.io/market-conductance/">
+<meta name="citation_public_url" content="https://codedpro.github.io/market-conductance/">
+<meta name="citation_fulltext_world_readable" content="">
+<meta name="citation_language" content="en">
+<meta name="citation_keywords" content="market microstructure; price impact; Kyle lambda; Amihud illiquidity; market conductance; gold; Commitments of Traders; inelastic markets; event study; falsification">
+
+<meta name="DC.title" content="Is market conductance a forecastable state variable? A free-data falsification study of the impact operator in gold and nine other markets">
+<meta name="DC.creator" content="codedpro">
+<meta name="DC.date" content="2026-09-06">
+<meta name="DC.type" content="Text">
+<meta name="DC.format" content="text/html">
+<meta name="DC.language" content="en">
+<meta name="DC.rights" content="MIT">
+<meta name="DC.identifier" content="https://codedpro.github.io/market-conductance/">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Market Conductance Study">
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content="Full results: six tests of the market impact operator">
+<meta property="og:description" content="Every coefficient and confidence interval: the persistence null, three kill conditions, a 137-event FOMC study and a ten-asset generalisation of price impact.">
+<meta property="og:url" content="https://codedpro.github.io/market-conductance/results/">
+<meta property="og:image" content="https://codedpro.github.io/market-conductance/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Market conductance study: forecastable in ten of ten asset classes; the holder-base explanation rejected at 5.4 sigma.">
+<meta property="article:published_time" content="2026-09-06">
+<meta property="article:modified_time" content="2026-09-10">
+<meta property="article:author" content="codedpro">
+<meta property="article:section" content="Quantitative finance">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Full results: six tests of the market impact operator">
+<meta name="twitter:description" content="Every coefficient and confidence interval: the persistence null, three kill conditions, a 137-event FOMC study and a ten-asset generalisation of price impact.">
+<meta name="twitter:image" content="https://codedpro.github.io/market-conductance/og.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="alternate" type="text/plain" href="https://codedpro.github.io/market-conductance/llms.txt" title="llms.txt">
+
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "WebSite",
+   "@id": "https://codedpro.github.io/market-conductance/#website",
+   "url": "https://codedpro.github.io/market-conductance/",
+   "name": "Market Conductance Study",
+   "description": "Empirical falsification study of the market price-impact operator.",
+   "inLanguage": "en",
+   "publisher": {
+    "@id": "https://codedpro.github.io/market-conductance/#org"
+   }
+  },
+  {
+   "@type": "Organization",
+   "@id": "https://codedpro.github.io/market-conductance/#org",
+   "name": "Project Lambda",
+   "url": "https://codedpro.github.io/market-conductance/",
+   "sameAs": [
+    "https://github.com/codedpro/market-conductance"
+   ],
+   "member": [
+    {
+     "@type": "Organization",
+     "name": "ITMaster",
+     "url": "https://itmaster.uk"
+    },
+    {
+     "@type": "Organization",
+     "name": "Code Nest",
+     "url": "https://code-nest.dev"
+    }
+   ]
+  },
+  {
+   "@type": "BreadcrumbList",
+   "@id": "https://codedpro.github.io/market-conductance/results/#breadcrumb",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Home",
+     "item": "https://codedpro.github.io/market-conductance/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Results",
+     "item": "https://codedpro.github.io/market-conductance/results/"
+    }
+   ]
+  },
+  {
+   "@type": "WebPage",
+   "@id": "https://codedpro.github.io/market-conductance/results/#webpage",
+   "url": "https://codedpro.github.io/market-conductance/results/",
+   "name": "Full Results: Six Tests of the Market Impact Operator",
+   "description": "Every coefficient and confidence interval: the persistence null, three kill conditions, a 137-event FOMC study and a ten-asset generalisation of price impact.",
+   "isPartOf": {
+    "@id": "https://codedpro.github.io/market-conductance/#website"
+   },
+   "breadcrumb": {
+    "@id": "https://codedpro.github.io/market-conductance/results/#breadcrumb"
+   },
+   "datePublished": "2026-09-06",
+   "dateModified": "2026-09-10",
+   "inLanguage": "en"
+  }
+ ]
+}
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="wrap">
+<nav class="topnav" aria-label="Sections">
+<a href="../">Study</a><a href="../results/">Results</a><a href="../methods/">Methods</a><a href="../data/">Data</a><a href="../faq/">FAQ</a>
+<a class="gh" href="https://github.com/codedpro/market-conductance">Code &#8599;</a>
+</nav>
+<main id="main">
+<h1>Full results</h1>
+<p class="sub">Every test, coefficient and confidence interval. Newey-West standard errors
+throughout; out-of-sample figures use expanding windows refit monthly, or leave-one-year-out where
+the event sample is too thin.</p>
+<div class="toc"><b>On this page</b><ul>
+<li><a href="#persistence">1. Is conductance a constant?</a></li>
+<li><a href="#kc1">2. Does &Lambda; beat volatility forecasts?</a></li>
+<li><a href="#kc2">3. Signed drift</a></li>
+<li><a href="#kc3">4. Large moves by &Lambda; state</a></li>
+<li><a href="#fomc">5. The FOMC event study</a></li>
+<li><a href="#generalisation">6. Ten-asset generalisation</a></li>
+<li><a href="#cot">Per-variable COT diagnostic</a></li>
+<li><a href="#settles">What this settles</a></li>
+</ul></div>
+
+<h2 id="persistence">1. Is conductance a constant with noise?</h2>
+<p>Under the null that <code>G</code> is constant and volume co-moves with volatility only through
+information arrival, log conductance is <strong>iid</strong>. The null distribution comes from
+2,000 iid bootstraps preserving the exact fat-tailed marginal.</p>
+<div class="tscroll"><table>
+<caption>Gold (GLD), 4,640 trading days, estimator at the fitted exponent &alpha;&#770; = 1.032.</caption>
+<thead><tr><th>Statistic</th><th class="n">Observed</th><th class="n">Null mean</th><th class="n">Null p99</th><th class="n">p</th></tr></thead>
+<tbody>
+<tr><td>AR(1)</td><td class="n">0.0549</td><td class="n">&minus;0.0003</td><td class="n">0.0350</td><td class="n">&lt;0.0005</td></tr>
+<tr><td>AR(22)</td><td class="n">0.0911</td><td class="n">0.0004</td><td class="n">0.0352</td><td class="n">&lt;0.0005</td></tr>
+<tr><td>Ljung-Box(22)</td><td class="n"><strong>1021.5</strong></td><td class="n">22.2</td><td class="n">40.0</td><td class="n">&lt;0.0005</td></tr>
+<tr><td>Variance ratio, 5d</td><td class="n">1.34</td><td class="n">1.00</td><td class="n">1.10</td><td class="n">&lt;0.0005</td></tr>
+<tr><td>Variance ratio, 22d</td><td class="n">3.11</td><td class="n">1.00</td><td class="n">1.23</td><td class="n">&lt;0.0005</td></tr>
+<tr><td>Variance ratio, 66d</td><td class="n"><strong>6.82</strong></td><td class="n">1.00</td><td class="n">1.42</td><td class="n">&lt;0.0005</td></tr>
+<tr><td>HAR out-of-sample R&sup2;</td><td class="n"><strong>+7.29%</strong></td><td class="n">&minus;0.15%</td><td class="n">+0.04%</td><td class="n">&lt;0.0005</td></tr>
+</tbody></table></div>
+<p>Variance ratios rising with horizon indicate genuine low-frequency structure rather than
+short-lived noise. Conductance is also not volatility relabelled: corr(log G, log realised vol) =
+0.262 and corr(log G, log implied vol) = 0.242.</p>
+
+<h2 id="kc1">2. Does holder-base &Lambda; beat realised and implied volatility?</h2>
+<div class="tscroll"><table>
+<caption>Target: mean log conductance over the forward window. &Delta;OOS is the change in
+out-of-sample R&sup2; from adding &Lambda;; negative means it made the forecast worse.</caption>
+<thead><tr><th>Horizon</th><th>Benchmark</th><th class="n">&Lambda; t-stat</th><th class="n">Incremental R&sup2;</th><th class="n">&Delta;OOS R&sup2;</th></tr></thead>
+<tbody>
+<tr><td>1 day</td><td>Realised + implied vol</td><td class="n">+2.79</td><td class="n">+0.0020</td><td class="n">&minus;0.0046</td></tr>
+<tr><td>1 week</td><td>Realised + implied vol</td><td class="n">+2.86</td><td class="n">+0.0068</td><td class="n">&minus;0.0098</td></tr>
+<tr><td>1 month</td><td>Realised + implied vol</td><td class="n">+2.33</td><td class="n">+0.0102</td><td class="n">+0.0067</td></tr>
+<tr><td>1 day</td><td>+ conductance's own history</td><td class="n">+1.15</td><td class="n">+0.0003</td><td class="n">&minus;0.0039</td></tr>
+<tr><td>1 week</td><td>+ conductance's own history</td><td class="n">+1.39</td><td class="n">+0.0014</td><td class="n">&minus;0.0122</td></tr>
+<tr><td>1 month</td><td>+ conductance's own history</td><td class="n">+1.58</td><td class="n">+0.0040</td><td class="n">&minus;0.0041</td></tr>
+</tbody></table></div>
+<p>&Lambda; reaches in-sample significance against the benchmark the theory named, but that
+survives neither out-of-sample evaluation nor the inclusion of conductance's own past. The blunt
+number: <strong>corr(log &Lambda;, log G) = 0.014</strong>.</p>
+
+<h2 id="kc2">3. Does signed asymmetry produce signed drift?</h2>
+<div class="tscroll"><table>
+<caption>Forward returns regressed on log(&Lambda;<sub>down</sub> / &Lambda;<sub>up</sub>).</caption>
+<thead><tr><th>Horizon</th><th class="n">Coefficient</th><th class="n">t</th><th class="n">p</th><th class="n">R&sup2;</th></tr></thead>
+<tbody>
+<tr><td>1 day</td><td class="n">&minus;0.00009</td><td class="n">&minus;0.63</td><td class="n">0.53</td><td class="n">0.0001</td></tr>
+<tr><td>1 week</td><td class="n">&minus;0.00038</td><td class="n">&minus;0.62</td><td class="n">0.53</td><td class="n">0.0005</td></tr>
+<tr><td>1 month</td><td class="n">&minus;0.00230</td><td class="n">&minus;1.09</td><td class="n">0.28</td><td class="n">0.0047</td></tr>
+</tbody></table></div>
+<p>Signs are consistently negative &mdash; the direction the theory predicts, since stressed longs
+should make a market conduct better downward &mdash; but nothing approaches significance.</p>
+
+<h2 id="kc3">4. Do large moves cluster in high-&Lambda; states?</h2>
+<div class="tscroll"><table>
+<caption>Probability of a 2&sigma; move in the following five days, by quintile of &Lambda;.</caption>
+<thead><tr><th>&Lambda; quintile</th><th class="n">Q1 (low)</th><th class="n">Q2</th><th class="n">Q3</th><th class="n">Q4</th><th class="n">Q5 (high)</th></tr></thead>
+<tbody><tr><td>P(large move)</td><td class="n">0.320</td><td class="n">0.206</td><td class="n">0.238</td><td class="n">0.238</td><td class="n">0.219</td></tr></tbody>
+</table></div>
+<p>Non-monotone, and the highest-&Lambda; quintile carries fewer large moves than the lowest &mdash;
+a ratio of 0.68, the wrong direction.</p>
+
+<h2 id="fomc">5. The FOMC event study</h2>
+<p>This is the test that separates a transmission operator from ordinary volatility clustering.
+FOMC decision dates are fixed years ahead, so news arrival carries no information and the size of
+each policy surprise is close to unpredictable by construction. Under clustered news, pre-event
+conductance should add nothing to what options already price. Under a genuine operator, it should
+forecast the response with a coefficient near 1.</p>
+<div class="tscroll"><table>
+<caption>137 scheduled FOMC decisions, 2008&ndash;2026. Target: log absolute return on the decision
+day. Unscheduled and emergency actions are excluded.</caption>
+<thead><tr><th>Predictor</th><th class="n">Coefficient</th><th class="n">t</th><th class="n">p</th><th class="n">95% interval</th></tr></thead>
+<tbody>
+<tr><td>Pre-event log conductance</td><td class="n"><strong>&minus;0.123</strong></td><td class="n">&minus;0.59</td><td class="n">0.555</td><td class="n">[&minus;0.53, +0.29]</td></tr>
+<tr><td>Pre-event log realised volatility</td><td class="n">&minus;0.096</td><td class="n">&minus;0.36</td><td class="n">0.718</td><td class="n">&mdash;</td></tr>
+<tr><td>Pre-event log implied volatility (GVZ)</td><td class="n"><strong>+1.005</strong></td><td class="n">+2.75</td><td class="n">0.006</td><td class="n">&mdash;</td></tr>
+</tbody></table></div>
+<p>Implied volatility prices scheduled-event risk almost exactly right. Structural conductance adds
+nothing, with the wrong sign. The HAC standard error is 0.208, so the predicted +1.0 sits
+<strong>5.4 standard errors</strong> outside the interval &mdash; an informative null, not an
+underpowered one. The result is stable across pre-event windows ending 2, 6 and 11 days out.</p>
+<h3>The detail that settles it</h3>
+<p>Pre-event conductance <em>does</em> load strongly on ordinary days (t = +7.98) and loses its
+significance precisely on days when news arrival is known in advance (t = +1.57). That ordering is
+backwards for a transmission operator, which should not care whether news was on the calendar. It is
+exactly what volatility clustering predicts.</p>
+
+<h2 id="generalisation">6. Ten-asset generalisation</h2>
+<p>The pre-registered bar: <em>if it only works on gold, it is a gold story dressed as a law.</em>
+It does not only work on gold.</p>
+<div class="tscroll"><table>
+<caption>Identical measurement across ten liquid instruments, each with its exponent re-estimated and its own iid null. All p < 0.0001.</caption>
+<thead><tr><th>Ticker</th><th>Asset class</th><th class="n">&alpha;&#770;</th>
+<th class="n">Ljung-Box(22)</th><th class="n">VR(66)</th><th class="n">OOS R&sup2;</th></tr></thead>
+<tbody><tr><td><strong>HYG</strong></td><td>High-yield credit</td><td class="n">0.994</td><td class="n">1632.6</td><td class="n">7.21</td><td class="n">+10.1%</td></tr>
+<tr><td><strong>SLV</strong></td><td>Silver</td><td class="n">0.797</td><td class="n">2459.0</td><td class="n">11.02</td><td class="n">+9.4%</td></tr>
+<tr><td><strong>SPY</strong></td><td>US large-cap equity</td><td class="n">1.357</td><td class="n">1208.2</td><td class="n">8.01</td><td class="n">+8.7%</td></tr>
+<tr><td><strong>QQQ</strong></td><td>US tech equity</td><td class="n">1.022</td><td class="n">1134.6</td><td class="n">7.68</td><td class="n">+8.1%</td></tr>
+<tr><td><strong>USO</strong></td><td>Crude oil</td><td class="n">0.734</td><td class="n">964.4</td><td class="n">6.30</td><td class="n">+7.3%</td></tr>
+<tr><td><strong>GLD</strong></td><td>Gold</td><td class="n">1.032</td><td class="n">1021.5</td><td class="n">6.82</td><td class="n">+7.3%</td></tr>
+<tr><td><strong>EEM</strong></td><td>EM equity</td><td class="n">1.257</td><td class="n">1103.5</td><td class="n">7.45</td><td class="n">+7.3%</td></tr>
+<tr><td><strong>GDX</strong></td><td>Gold miners</td><td class="n">1.240</td><td class="n">1173.6</td><td class="n">7.45</td><td class="n">+7.2%</td></tr>
+<tr><td><strong>TLT</strong></td><td>Long Treasuries</td><td class="n">1.027</td><td class="n">729.5</td><td class="n">6.46</td><td class="n">+5.6%</td></tr>
+<tr><td><strong>FXE</strong></td><td>Euro</td><td class="n">0.412</td><td class="n">777.0</td><td class="n">6.51</td><td class="n">+5.2%</td></tr></tbody></table></div>
+<p>Estimated impact exponents span 0.41 for the euro to 1.36 for the S&amp;P 500, so no single
+assumed exponent &mdash; square-root or Amihud &mdash; would have been correct anywhere near
+universally.</p>
+
+<h2 id="cot">Per-variable Commitments of Traders diagnostic</h2>
+<p>Construction-free: each raw variable added individually to the full control set, so the result
+does not depend on how &Lambda; was assembled.</p>
+<div class="tscroll"><table>
+<caption>Forecasting mean log conductance one month ahead, over realised vol + implied vol +
+conductance's own history.</caption>
+<thead><tr><th>Variable</th><th>Role in the theory</th><th class="n">t</th><th class="n">&Delta;OOS R&sup2;</th></tr></thead>
+<tbody>
+<tr><td>Trader count (breadth)</td><td>Absorption</td><td class="n"><strong>&minus;3.18</strong></td><td class="n"><strong>+0.79 pp</strong></td></tr>
+<tr><td>Open interest (depth)</td><td>Absorption</td><td class="n"><strong>&minus;2.88</strong></td><td class="n"><strong>+0.46 pp</strong></td></tr>
+<tr><td>Managed Money net / OI</td><td>Forced mass</td><td class="n">&minus;1.18</td><td class="n">&minus;0.21 pp</td></tr>
+<tr><td>Managed Money long / OI</td><td>Forced mass</td><td class="n">&minus;1.17</td><td class="n">&minus;0.09 pp</td></tr>
+<tr><td>Managed Money short / OI</td><td>Forced mass</td><td class="n">+0.99</td><td class="n">&minus;0.74 pp</td></tr>
+<tr><td>Managed Money gross / OI</td><td>Forced mass</td><td class="n">&minus;0.04</td><td class="n">&minus;0.49 pp</td></tr>
+<tr><td>&Delta; Managed Money net, 5d</td><td>Forced mass</td><td class="n">&minus;0.25</td><td class="n">&minus;0.26 pp</td></tr>
+<tr><td>Swap dealer short / OI</td><td>Forced mass</td><td class="n">&minus;0.49</td><td class="n">&minus;1.58 pp</td></tr>
+<tr><td>Producer short / OI</td><td>Forced mass</td><td class="n">&minus;0.41</td><td class="n">&minus;1.29 pp</td></tr>
+</tbody></table></div>
+<p>All twelve variables jointly add +2.0 percentage points of in-sample R&sup2; and lose 5.2 points
+out of sample &mdash; the signature of overfitting.</p>
+
+<h2 id="settles">What this settles</h2>
+<h3>Settled, in the theory's favour</h3>
+<p>The impact operator is a genuine state variable: persistent, forecastable at 7.3% out-of-sample
+R&sup2;, distinct from realised and implied volatility, and present in every liquid market tested.
+A constant-impact reading is decisively rejected.</p>
+<h3>Settled, against the theory</h3>
+<p>That the persistence is produced by the discretion distribution of the holder base. The
+forced-mass side is flat, the only signal is generic depth and breadth, and the effect disappears
+on scheduled events where it should be strongest.</p>
+<h3>Still open</h3>
+<p>The absorption stack the theory specifies &mdash; COMEX registered versus eligible stocks, LBMA
+vault holdings, Bank of England custody, Swiss customs &mdash; was never testable, because the
+primary sources are blocked. But note the bar it now faces: it would have to explain a signature
+identical in markets with no vaults at all.</p>
+
+</main>
+<footer>
+<p><strong>Contributing team.</strong> Research engineering and infrastructure by
+<a href="https://itmaster.uk">ITMaster</a> and <a href="https://code-nest.dev">Code Nest</a>.</p>
+<p><strong>Cite this work.</strong> codedpro (2026). <em>Is market conductance a forecastable state variable? A free-data falsification study of the impact operator in gold and nine other markets.</em>
+<a href="https://codedpro.github.io/market-conductance/">https://codedpro.github.io/market-conductance/</a></p>
+<p><a href="../">Study</a> &middot; <a href="../results/">Full results</a> &middot;
+<a href="../methods/">Methods</a> &middot; <a href="../data/">Data sources</a> &middot;
+<a href="../faq/">FAQ</a> &middot; <a href="https://github.com/codedpro/market-conductance">Code and data on GitHub</a></p>
+<p>MIT licensed. Published 2026-09-06, last updated 2026-09-10.
+<strong>Not investment advice</strong> &mdash; this is empirical research and contains no
+recommendation to trade any instrument.</p>
+</footer>
+</div>
+</body>
+</html>
